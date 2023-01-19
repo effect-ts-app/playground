@@ -1,0 +1,24 @@
+lockfileVersion: 5.4
+
+patchedDependencies:
+  typescript@5.0.0-tsplus.20230113:
+    hash: 4lokxnnems7dr5czg2fre2i5fq
+    path: patches/typescript@5.0.0-tsplus.20230113.patch
+
+specifiers:
+  typescript: https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz
+
+devDependencies:
+  typescript: '@cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz_4lokxnnems7dr5czg2fre2i5fq'
+
+packages:
+
+  '@cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz_4lokxnnems7dr5czg2fre2i5fq':
+    resolution: {tarball: https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz}
+    id: '@cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz'
+    name: typescript
+    version: 5.0.0-tsplus.20230113
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: true
+    patched: true

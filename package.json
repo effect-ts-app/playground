@@ -6,6 +6,11 @@
   "author": "Michael Arnaldi <arnaldimichael@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.156/compiler/typescript.tgz"
+    "typescript": "https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "typescript@5.0.0-tsplus.20230113": "patches/typescript@5.0.0-tsplus.20230113.patch"
+    }
   }
 }
