@@ -1,43 +1,42 @@
-import { createFilter } from "@rollup/pluginutils";
-import fs from "fs";
-import * as nodePath from "path";
-import ts from "typescript";
-import type * as V from "vite";
-import reactPlugin, { Options } from "@vitejs/plugin-react";
+import { createFilter } from "@rollup/pluginutils"
+import fs from "fs"
+import * as nodePath from "path"
+import ts from "typescript"
+import type * as V from "vite"
 
-const configPath = ts.findConfigFile("./", ts.sys.fileExists, "tsconfig.json");
+const configPath = ts.findConfigFile("./", ts.sys.fileExists, "tsconfig.json")
 
 if (!configPath) {
-  throw new Error('Could not find a valid "tsconfig.json".');
+  throw new Error("Could not find a valid \"tsconfig.json\".")
 }
 
-const baseDir = nodePath.dirname(nodePath.resolve(configPath));
-const cacheDir = nodePath.join(baseDir, ".cache/effect");
+const baseDir = nodePath.dirname(nodePath.resolve(configPath))
+const cacheDir = nodePath.join(baseDir, ".cache/effect")
 
 if (!fs.existsSync(cacheDir)) {
-  fs.mkdirSync(cacheDir, { recursive: true });
+  fs.mkdirSync(cacheDir, { recursive: true })
 }
 
-const registry = ts.createDocumentRegistry();
-const files = new Set<string>();
+const registry = ts.createDocumentRegistry()
+const files = new Set<string>()
 
-let services: ts.LanguageService;
+let services: ts.LanguageService
 
 const getScriptVersion = (fileName: string): string => {
-  const modified = ts.sys.getModifiedTime!(fileName);
+  const modified = ts.sys.getModifiedTime!(fileName)
   if (modified) {
-    return ts.sys.createHash!(`${fileName}${modified.toISOString()}`);
+    return ts.sys.createHash!(`${fileName}${modified.toISOString()}`)
   } else {
-    files.delete(fileName);
+    files.delete(fileName)
   }
-  return "none";
-};
+  return "none"
+}
 
 const init = () => {
   const { config } = ts.parseConfigFileTextToJson(
     configPath,
     ts.sys.readFile(configPath)!
-  );
+  )
 
   Object.assign(config.compilerOptions, {
     sourceMap: false,
@@ -47,146 +46,149 @@ const init = () => {
     declaration: false,
     declarationMap: false,
     module: "ESNext",
-    target: "ES2022",
-  });
+    target: "ES2022"
+  })
 
-  const tsconfig = ts.parseJsonConfigFileContent(config, ts.sys, baseDir!);
+  const tsconfig = ts.parseJsonConfigFileContent(config, ts.sys, baseDir)
 
-  if (!tsconfig.options) tsconfig.options = {};
+  if (!tsconfig.options) tsconfig.options = {}
+  // fix tsplus not initialising
+  const opts = (tsconfig.options as any)
+  opts.configFilePath = configPath
 
-  tsconfig.fileNames.forEach((fileName) => {
-    files.add(fileName);
-  });
+  tsconfig.fileNames.forEach(fileName => {
+    files.add(fileName)
+  })
 
   const servicesHost: ts.LanguageServiceHost = {
-    realpath: (fileName) => ts.sys.realpath?.(fileName) ?? fileName,
+    realpath: fileName => ts.sys.realpath?.(fileName) ?? fileName,
     getScriptFileNames: () => Array.from(files),
-    getScriptVersion: getScriptVersion,
-    getScriptSnapshot: (fileName) => {
+    getScriptVersion,
+    getScriptSnapshot: fileName => {
       if (!ts.sys.fileExists(fileName)) {
-        return undefined;
+        return undefined
       }
       return ts.ScriptSnapshot.fromString(
         ts.sys.readFile(fileName)!.toString()
-      );
+      )
     },
     getCurrentDirectory: () => process.cwd(),
     getCompilationSettings: () => tsconfig.options,
-    getDefaultLibFileName: (options) => ts.getDefaultLibFilePath(options),
-    fileExists: (fileName) => ts.sys.fileExists(fileName),
-    readFile: (fileName) => ts.sys.readFile(fileName),
-  };
+    getDefaultLibFileName: options => ts.getDefaultLibFilePath(options),
+    fileExists: fileName => ts.sys.fileExists(fileName),
+    readFile: fileName => ts.sys.readFile(fileName)
+  }
 
-  const services = ts.createLanguageService(servicesHost, registry);
+  const services = ts.createLanguageService(servicesHost, registry)
 
   setTimeout(() => {
-    services.getProgram();
-  }, 200);
+    services.getProgram()
+  }, 200)
 
-  return services;
-};
+  return services
+}
 
 const getEmit = (path: string) => {
-  files.add(path);
+  files.add(path)
 
-  const program = services.getProgram()!;
-  const source = program.getSourceFile(path);
+  const program = services.getProgram()!
+  const source = program.getSourceFile(path)
 
-  let text: string | undefined;
+  let text: string | undefined
 
   program.emit(
     source,
     (file, content) => {
       if (file.endsWith(".js") || file.endsWith(".jsx")) {
-        text = content;
+        text = content
       }
     },
     void 0,
     void 0
-  );
+  )
 
   if (!text) {
-    throw new Error(`Typescript failed emit for file: ${path}`);
+    throw new Error(`Typescript failed emit for file: ${path}`)
   }
 
-  return text;
-};
+  return text
+}
 
-const cache = new Map<string, { hash: string; content: string }>();
+const cache = new Map<string, { hash: string; content: string }>()
 
 export const fromCache = (fileName: string) => {
-  const current = getScriptVersion(fileName);
+  const current = getScriptVersion(fileName)
   if (cache.has(fileName)) {
-    const cached = cache.get(fileName)!;
+    const cached = cache.get(fileName)!
     if (cached.hash === current) {
-      return cached.content;
+      return cached.content
     }
   }
-  const path = nodePath.join(cacheDir, `${ts.sys.createHash!(fileName)}.hash`);
+  const path = nodePath.join(cacheDir, `${ts.sys.createHash!(fileName)}.hash`)
   if (fs.existsSync(path)) {
-    const hash = fs.readFileSync(path).toString("utf-8");
+    const hash = fs.readFileSync(path).toString("utf-8")
     if (hash === current) {
       return fs
         .readFileSync(
           nodePath.join(cacheDir, `${ts.sys.createHash!(fileName)}.content`)
         )
-        .toString("utf-8");
+        .toString("utf-8")
     }
   }
-};
+}
 
 export const toCache = (fileName: string, content: string) => {
-  const current = getScriptVersion(fileName);
-  const path = nodePath.join(cacheDir, `${ts.sys.createHash!(fileName)}.hash`);
-  fs.writeFileSync(path, current);
+  const current = getScriptVersion(fileName)
+  const path = nodePath.join(cacheDir, `${ts.sys.createHash!(fileName)}.hash`)
+  fs.writeFileSync(path, current)
   fs.writeFileSync(
     nodePath.join(cacheDir, `${ts.sys.createHash!(fileName)}.content`),
     content
-  );
-  cache.set(fileName, { hash: current, content });
-  return content;
-};
+  )
+  cache.set(fileName, { hash: current, content })
+  return content
+}
 
 export const getCompiled = (path: string) => {
-  const cached = fromCache(path);
+  const cached = fromCache(path)
   if (cached) {
     return {
-      code: cached,
-    };
+      code: cached
+    }
   }
 
-  const syntactic = services.getSyntacticDiagnostics(path);
+  const syntactic = services.getSyntacticDiagnostics(path)
 
   if (syntactic.length > 0) {
     throw new Error(
       syntactic
-        .map((_) => ts.flattenDiagnosticMessageText(_.messageText, "\n"))
+        .map(_ => ts.flattenDiagnosticMessageText(_.messageText, "\n"))
         .join("\n")
-    );
+    )
   }
 
-  const semantic = services.getSemanticDiagnostics(path);
-  services.cleanupSemanticCache();
+  const semantic = services.getSemanticDiagnostics(path)
+  services.cleanupSemanticCache()
 
   if (semantic.length > 0) {
     throw new Error(
       semantic
-        .map((_) => ts.flattenDiagnosticMessageText(_.messageText, "\n"))
+        .map(_ => ts.flattenDiagnosticMessageText(_.messageText, "\n"))
         .join("\n")
-    );
+    )
   }
 
-  const code = toCache(path, getEmit(path));
+  const code = toCache(path, getEmit(path))
 
   return {
-    code,
-  };
-};
+    code
+  }
+}
 
-export function effectPlugin(options?: Options): V.PluginOption[] {
-  const filter = createFilter(options?.include, options?.exclude);
+export function effectPlugin(options?: any): V.PluginOption[] {
+  const filter = createFilter(options?.include, options?.exclude)
   if (!services) {
-    services = init();
+    services = init()
   }
   const plugin: V.PluginOption = {
     name: "vite:typescript-effect",
@@ -197,37 +199,37 @@ export function effectPlugin(options?: Options): V.PluginOption[] {
           if (/\.tsx?/.test(path)) {
             switch (event) {
               case "add": {
-                files.add(path);
-                break;
+                files.add(path)
+                break
               }
               case "change": {
-                files.add(path);
-                break;
+                files.add(path)
+                break
               }
               case "unlink": {
-                files.delete(path);
-                break;
+                files.delete(path)
+                break
               }
             }
           }
         }
-      });
+      })
     },
     watchChange(path, change) {
       if (filter(path)) {
         if (/\.tsx?/.test(path)) {
           switch (change.event) {
             case "create": {
-              files.add(path);
-              break;
+              files.add(path)
+              break
             }
             case "update": {
-              files.add(path);
-              break;
+              files.add(path)
+              break
             }
             case "delete": {
-              files.delete(path);
-              break;
+              files.delete(path)
+              break
             }
           }
         }
@@ -235,9 +237,9 @@ export function effectPlugin(options?: Options): V.PluginOption[] {
     },
     transform(_, path) {
       if (/\.tsx?/.test(path) && filter(path)) {
-        return getCompiled(path);
+        return getCompiled(path)
       }
-    },
-  };
-  return [plugin, ...reactPlugin(options)];
+    }
+  }
+  return [plugin]
 }

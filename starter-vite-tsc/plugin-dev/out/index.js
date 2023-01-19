@@ -22,15 +22,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -40,10 +31,9 @@ var pluginutils_1 = require("@rollup/pluginutils");
 var fs_1 = __importDefault(require("fs"));
 var nodePath = __importStar(require("path"));
 var typescript_1 = __importDefault(require("typescript"));
-var plugin_react_1 = __importDefault(require("@vitejs/plugin-react"));
 var configPath = typescript_1["default"].findConfigFile("./", typescript_1["default"].sys.fileExists, "tsconfig.json");
 if (!configPath) {
-    throw new Error('Could not find a valid "tsconfig.json".');
+    throw new Error("Could not find a valid \"tsconfig.json\".");
 }
 var baseDir = nodePath.dirname(nodePath.resolve(configPath));
 var cacheDir = nodePath.join(baseDir, ".cache/effect");
@@ -78,6 +68,9 @@ var init = function () {
     var tsconfig = typescript_1["default"].parseJsonConfigFileContent(config, typescript_1["default"].sys, baseDir);
     if (!tsconfig.options)
         tsconfig.options = {};
+    // fix tsplus not initialising
+    var opts = tsconfig.options;
+    opts.configFilePath = configPath;
     tsconfig.fileNames.forEach(function (fileName) {
         files.add(fileName);
     });
@@ -229,6 +222,6 @@ function effectPlugin(options) {
             }
         }
     };
-    return __spreadArray([plugin], (0, plugin_react_1["default"])(options), true);
+    return [plugin];
 }
 exports.effectPlugin = effectPlugin;
