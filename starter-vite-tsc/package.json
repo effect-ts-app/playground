@@ -8,25 +8,40 @@
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf .cache && rm -rf node_modules/.vite",
-    "build-plugin": "tsc -p plugin-dev/tsconfig.json && yarn clean && yarn upgrade @effect/plugin-vite-react"
+    "build-plugin": "tsc -p plugin-dev/tsconfig.json && pnpm i"
   },
   "dependencies": {
-    "effect": "2.0.0-next.12",
+    "@fp-ts/data": "^0.0.39",
+    "@effect/io": "^0.0.65",
+    "@effect-ts-app/core": "^2.4.8",
+    "@effect-ts-app/schema": "^2.3.18",
+    "@effect-ts-app/boilerplate-prelude": "^2.4.8",
+    "@effect-ts-app/boilerplate-react": "^2.3.25",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.5",
-    "@effect/language-service": "^0.0.13",
+    "@babel/core": "^7.20.12",
+    "@effect/language-service": "^0.0.15",
     "@effect/vite-plugin-react": "./plugin-dev",
     "@rollup/pluginutils": "^5.0.2",
-    "@types/babel__core": "^7.1.20",
-    "@types/node": "^18.11.13",
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.9",
-    "@vitejs/plugin-react": "^3.0.0",
+    "@types/babel__core": "^7.20.0",
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.0.1",
     "babel-plugin-annotate-pure-calls": "^0.4.0",
-    "typescript": "https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.156/compiler/typescript.tgz",
-    "vite": "^4.0.0"
+    "typescript": "https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz",
+    "vite": "^4.0.4"
+  },
+  "resolutions": {
+    "@fp-ts/data": "0.0.39"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@effect/io@0.0.65": "patches/@effect__io@0.0.65.patch",
+      "@effect/language-service@0.0.15": "patches/@effect__language-service@0.0.15.patch",
+      "typescript@5.0.0-tsplus.20230113": "patches/typescript@5.0.0-tsplus.20230113.patch"
+    }
   }
 }
