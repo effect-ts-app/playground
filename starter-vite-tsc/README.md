@@ -6,9 +6,9 @@ This project is a quick-start that uses the standard typescript compiler togethe
 
 Be sure to check [[Root README.md]](../README.md)
 
-## One Click
+<!-- ## One Click
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/effect-ts-app/playground/tree/main/starter-vite-tsc?file=src%2FApp.tsx)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/effect-ts-app/playground/tree/main/starter-vite-tsc?file=src%2FApp.tsx) -->
 
 ## Install & Run
 
