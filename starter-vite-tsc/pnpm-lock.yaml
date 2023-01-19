@@ -16,10 +16,10 @@ patchedDependencies:
 
 specifiers:
   '@babel/core': ^7.20.12
-  '@effect-ts-app/boilerplate-prelude': ^2.4.8
-  '@effect-ts-app/boilerplate-react': ^2.3.25
-  '@effect-ts-app/core': ^2.4.8
-  '@effect-ts-app/schema': ^2.3.18
+  '@effect-app/core': ^0.7.0
+  '@effect-app/prelude': ^0.7.0
+  '@effect-app/react': ^0.7.0
+  '@effect-app/schema': ^0.7.0
   '@effect/io': ^0.0.65
   '@effect/language-service': ^0.0.15
   '@effect/vite-plugin-react': ./plugin-dev
@@ -37,10 +37,10 @@ specifiers:
   vite: ^4.0.4
 
 dependencies:
-  '@effect-ts-app/boilerplate-prelude': 2.4.8
-  '@effect-ts-app/boilerplate-react': 2.3.25
-  '@effect-ts-app/core': 2.4.8
-  '@effect-ts-app/schema': 2.3.18
+  '@effect-app/core': 0.7.0
+  '@effect-app/prelude': 0.7.0
+  '@effect-app/react': 0.7.0
+  '@effect-app/schema': 0.7.0
   '@effect/io': 0.0.65_ch2m3gurmkzos5ffwbxtffvjeq
   '@fp-ts/data': 0.0.39
   react: 18.2.0
@@ -289,11 +289,30 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@effect-ts-app/boilerplate-prelude/2.4.8:
-    resolution: {integrity: sha512-oukNepzfqT9rewSEf/Uq1kIZr1dGldYAtJmZNK7P3ZwX4QmDVjLQ5XpPRwZGkeNn7XCRAx8KGhhnHahP/uJokQ==}
+  /@effect-app/core/0.7.0:
+    resolution: {integrity: sha512-piC/dPYxXdegLAu1BLLbEiClpw27/p4gG44yQhKXWRWY2+BqKVnw+m4QgC/cldah9ttIHg+x2/E7bPrI9rAaxA==}
     dependencies:
-      '@effect-ts-app/core': 2.4.8
-      '@effect-ts-app/schema': 2.3.18
+      '@effect-ts/core': 0.60.5
+      '@effect-ts/monocle': 0.43.0_@effect-ts+core@0.60.5
+      '@effect-ts/system': 0.57.5
+      '@effect/io': 0.0.65_ch2m3gurmkzos5ffwbxtffvjeq
+      '@fp-ts/core': 0.0.11
+      '@fp-ts/data': 0.0.39
+      cross-fetch: 3.1.5
+      lodash: 4.17.21
+      path-parser: 6.1.0
+      query-string: 8.1.0
+      uuid: 9.0.0
+      validator: 13.7.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@effect-app/prelude/0.7.0:
+    resolution: {integrity: sha512-yfC1o/+WEKyp7VDMTQVS9vtPaIX5/pe5ddCE9I+eSmIMm2lXEkkeDNR7V1296Ieh8zNGQvHDmBfrdf7ySEYXbA==}
+    dependencies:
+      '@effect-app/core': 0.7.0
+      '@effect-app/schema': 0.7.0
       '@effect-ts/core': 0.60.5
       '@effect-ts/monocle': 0.43.0_@effect-ts+core@0.60.5
       '@effect-ts/system': 0.57.5
@@ -314,40 +333,21 @@ packages:
       - encoding
     dev: false
 
-  /@effect-ts-app/boilerplate-react/2.3.25:
-    resolution: {integrity: sha512-GtE1FlDMkOzqOhsdrvWM4LFAStdcvCXabzZiQXvfSc2i+wFhMk/70wOSpbigYIMJFjBhguiGUPE/gvnK76aQ5w==}
+  /@effect-app/react/0.7.0:
+    resolution: {integrity: sha512-Ck7yK6Wk7l010evW2RlXqc8Nyfbt8v3hR3HgV8TlJnPwTTwg7aBxTgvD1iSLjmOcXHvfllFse/X97xfq4ye0bA==}
     dependencies:
-      '@effect-ts-app/boilerplate-prelude': 2.4.8
-      '@effect-ts-app/core': 2.4.8
-      '@effect-ts-app/schema': 2.3.18
+      '@effect-app/core': 0.7.0
+      '@effect-app/prelude': 0.7.0
+      '@effect-app/schema': 0.7.0
       date-fns: 2.29.3
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@effect-ts-app/core/2.4.8:
-    resolution: {integrity: sha512-DJf8UuPhSKkRPRMYJV0oqreHRBwKle8QOlFESf14hxhcMI/gOON4+2YSxge0foZd1QoRCwx03xPvrLmmc3qExA==}
+  /@effect-app/schema/0.7.0:
+    resolution: {integrity: sha512-vwHc/sEDxeynXj1DDg87YpBwIbkprSbCJaexnl0EajJkkPDB1NPeTC0gmjth+35XSzOO6R5RCpR9wY++mdRePg==}
     dependencies:
-      '@effect-ts/core': 0.60.5
-      '@effect-ts/monocle': 0.43.0_@effect-ts+core@0.60.5
-      '@effect-ts/system': 0.57.5
-      '@effect/io': 0.0.65_ch2m3gurmkzos5ffwbxtffvjeq
-      '@fp-ts/core': 0.0.11
-      '@fp-ts/data': 0.0.39
-      cross-fetch: 3.1.5
-      lodash: 4.17.21
-      path-parser: 6.1.0
-      query-string: 8.1.0
-      uuid: 9.0.0
-      validator: 13.7.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /@effect-ts-app/schema/2.3.18:
-    resolution: {integrity: sha512-TTYQZ8PxMBZlYL6GwvyFtX+bYwD8X2PSudlpnvdv9ZWeLjtIwvDeG3IFC7nwvbu9b06Yx0PfyW++dVVLUjQEgg==}
-    dependencies:
-      '@effect-ts-app/core': 2.4.8
+      '@effect-app/core': 0.7.0
       '@effect-ts/core': 0.60.5
       '@effect-ts/monocle': 0.43.0_@effect-ts+core@0.60.5
       '@effect-ts/system': 0.57.5
