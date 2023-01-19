@@ -6,6 +6,15 @@ import React from 'react'
 function App() {
   const [count, setCount] = useState(0);
 
+  console.log(
+    "well hellow thar",
+    Effect("1"),
+    Effect.succeed("1"),
+    Effect("1").map(_ => _ + "+1=2")
+      .unsafeRunSync
+  )
+
+
   return (
     <div className="App">
       <div>
