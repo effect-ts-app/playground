@@ -1,0 +1,33 @@
+{
+  "name": "starter-traced",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "ts-node --esm src/main.ts",
+    "debug": "ts-node --esm src/main.debug.ts"
+  },
+  "keywords": [],
+  "author": "Michael Arnaldi",
+  "license": "MIT",
+  "devDependencies": {
+    "@effect/language-service": "^0.0.15",
+    "@rollup/pluginutils": "^5.0.2",
+    "@types/node": "^18.11.18",
+    "prettier": "^2.8.3",
+    "ts-node": "^10.9.1",
+    "typescript": "https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz"
+  },
+  "dependencies": {
+    "@fp-ts/data": "^0.0.39",
+    "@effect/io": "^0.0.65",
+    "@effect-app/core": "^0.7.0",
+    "@effect-app/schema": "^0.7.0",
+    "@effect-app/prelude": "^0.7.0"
+  },
+  "resolutions": {
+    "@fp-ts/data": "0.0.39",
+    "typescript": "https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz"
+  }
+}
