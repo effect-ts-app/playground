@@ -3,6 +3,7 @@
     "noEmit": true,
     "target": "ES2022",
     "module": "ES2022",
+    "skipLibCheck": true,
     "moduleResolution": "Node16",
     "downlevelIteration": true,
     "strict": true,
@@ -17,5 +18,8 @@
       "./node_modules/@effect-app/core/vendor/fp-ts-data-tsplus.json"
     ],
   },
-  "include": ["src/**/*.ts"]
+  "include": ["**/*.ts"],
+  "ts-node": {
+    "transpileOnly": false,
+  }
 }

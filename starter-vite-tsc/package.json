@@ -35,7 +35,8 @@
     "vite": "^4.0.4"
   },
   "resolutions": {
-    "@fp-ts/data": "0.0.39"
+    "@fp-ts/data": "0.0.39",
+    "typescript": "https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz"
   },
   "pnpm": {
     "patchedDependencies": {
