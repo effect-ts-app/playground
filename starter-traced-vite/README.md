@@ -12,3 +12,12 @@ Run `pnpm install` and `pnpm run start` to start the `src/main.ts` program.
 Note: there is no need for a debug mode as the normal run is already traced. If a debug mode is configured, like in the `starter` project it will take over tracing as it is more precised compared to the plugin based one at the price of being expensive performance wise.
 
 In this case the `main.debug.ts` script is used to enable execution logging, a feature that enables debug log of every operation encountered by the runtime.
+
+### Quokka support
+
+You can open `src/main.ts` in Quokka. 
+It works, but because of the Vite TSC Compiler plugin architecture, there are some limitations:
+To observe our code changes in output we must:
+
+- Save the file
+- Make another change, like add/remove some whitespace
