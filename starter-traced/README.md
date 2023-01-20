@@ -7,7 +7,7 @@ This project is a quick-start that uses the standard TS+ compiler together with 
 
 ## Install & Run
 
-Run `yarn install` and `yarn run start` to start the `src/main.ts` program.
+Run `pnpm install` and `pnpm run start` to start the `src/main.ts` program.
 
 Note: there is no need for a debug mode as the normal run is already traced. If a debug mode is configured, like in the `starter` project it will take over tracing as it is more precised compared to the plugin based one at the price of being expensive performance wise.
 
