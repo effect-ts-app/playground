@@ -12,7 +12,7 @@
   "author": "Michael Arnaldi",
   "license": "MIT",
   "devDependencies": {
-    "@effect-app/compiler": "^0.7.0",
+    "@effect-app/compiler": "^0.7.2",
     "@effect/language-service": "^0.0.15",
     "@rollup/pluginutils": "^5.0.2",
     "@types/node": "^18.11.18",

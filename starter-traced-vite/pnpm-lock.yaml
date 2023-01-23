@@ -5,7 +5,7 @@ overrides:
   typescript: https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz
 
 specifiers:
-  '@effect-app/compiler': ^0.7.0
+  '@effect-app/compiler': ^0.7.2
   '@effect-app/core': ^0.7.0
   '@effect-app/prelude': ^0.7.0
   '@effect-app/schema': ^0.7.0
@@ -27,7 +27,7 @@ dependencies:
   '@fp-ts/data': 0.0.39
 
 devDependencies:
-  '@effect-app/compiler': 0.7.0_@types+node@18.11.18
+  '@effect-app/compiler': 0.7.2_@types+node@18.11.18
   '@effect/language-service': 0.0.15
   '@rollup/pluginutils': 5.0.2
   '@types/node': 18.11.18
@@ -38,8 +38,8 @@ devDependencies:
 
 packages:
 
-  /@effect-app/compiler/0.7.0_@types+node@18.11.18:
-    resolution: {integrity: sha512-p/W0IZXARTszpgN33caKDtRwp+dwbC/9sEkKUzOR0UvGB/e69coL3iPQq862wHDq7CrLq+F3I4E8NQs9Zfm0cg==}
+  /@effect-app/compiler/0.7.2_@types+node@18.11.18:
+    resolution: {integrity: sha512-AOv+PttAwo+Mb65Fcz7qLzCREcMPpemI5P/XVvD8sgR8dWJAwM1dyAX+eKLBxl4wVvK/GJml5L0GeIKRXn+nKQ==}
     dependencies:
       '@rollup/pluginutils': 5.0.2
       vite: 4.0.4_@types+node@18.11.18
