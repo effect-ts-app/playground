@@ -17,7 +17,7 @@
     "@rollup/pluginutils": "^5.0.2",
     "@types/node": "^18.11.18",
     "prettier": "^2.8.3",
-    "typescript": "https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz",
+    "typescript": "https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.168/compiler/typescript.tgz",
     "vite-node": "^0.27.2",
     "vite": "^4.0.4"
   },
@@ -30,6 +30,6 @@
   },
   "resolutions": {
     "@fp-ts/data": "0.0.39",
-    "typescript": "https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz"
+    "typescript": "https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.168/compiler/typescript.tgz"
   }
 }

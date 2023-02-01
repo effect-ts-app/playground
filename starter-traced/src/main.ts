@@ -13,13 +13,13 @@ export const program: Effect<Name, never, void> = Effect.gen(function* ($) {
   yield* $(Effect.die("Error"));
 });
 
-export const NameLive: Layer<never, never, Name> = Layer.effect(Name)(
+export const NameLive: Layer<never, never, Name> = Layer.effect(Name,
   Effect.sync(() => ({
     getName: Effect.succeed("Mike"),
   }))
 );
 
-  program
+program
   .provideLayer(NameLive)
   .tapErrorCause(_ => Effect.logErrorCauseMessage("Error", _))
-  .unsafeFork
+  .runFork

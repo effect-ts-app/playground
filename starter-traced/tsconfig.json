@@ -7,18 +7,30 @@
     "moduleResolution": "Node16",
     "downlevelIteration": true,
     "strict": true,
-    "plugins": [{ "name": "@effect/language-service" }],
-    "transformers": [{ "name": "@effect/language-service/transformer" }],
-
+    "plugins": [
+      {
+        "name": "@effect/language-service"
+      }
+    ],
+    "transformers": [
+      {
+        "name": "@effect/language-service/transformer",
+        "trace": {
+          "exclude": [
+            "**/*.ts"
+          ]
+        }
+      }
+    ],
     "tsPlusConfig": "./tsplus.config.json",
     "tsPlusTypes": [
-      "./node_modules/@effect-app/core/vendor/effect-ts-tsplus.json",
       "./node_modules/@effect-app/core/vendor/effect-io-tsplus.json",
-      "./node_modules/@effect-app/core/vendor/effect-stm-tsplus.json",
       "./node_modules/@effect-app/core/vendor/fp-ts-data-tsplus.json"
     ],
   },
-  "include": ["**/*.ts"],
+  "include": [
+    "**/*.ts"
+  ],
   "ts-node": {
     "transpileOnly": false,
   }

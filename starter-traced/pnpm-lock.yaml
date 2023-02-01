@@ -1,36 +1,35 @@
 lockfileVersion: 5.4
 
 overrides:
-  '@fp-ts/data': 0.0.39
-  typescript: https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz
+  typescript: https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.168/compiler/typescript.tgz
 
 specifiers:
-  '@effect-app/core': ^0.7.0
-  '@effect-app/prelude': ^0.7.0
-  '@effect-app/schema': ^0.7.0
-  '@effect/io': ^0.0.65
-  '@effect/language-service': ^0.0.15
-  '@fp-ts/data': 0.0.39
+  '@effect-app/core': ^0.17.1
+  '@effect-app/prelude': ^0.17.2
+  '@effect-app/schema': ^0.15.1
+  '@effect/io': ^0.1.6
+  '@effect/language-service': ^0.0.18
+  '@fp-ts/data': ^0.1.1
   '@rollup/pluginutils': ^5.0.2
   '@types/node': ^18.11.18
   prettier: ^2.8.3
   ts-node: ^10.9.1
-  typescript: https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz
+  typescript: https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.168/compiler/typescript.tgz
 
 dependencies:
-  '@effect-app/core': 0.7.0
-  '@effect-app/prelude': 0.7.0
-  '@effect-app/schema': 0.7.0
-  '@effect/io': 0.0.65
-  '@fp-ts/data': 0.0.39
+  '@effect-app/core': 0.17.1
+  '@effect-app/prelude': 0.17.2
+  '@effect-app/schema': 0.15.1
+  '@effect/io': 0.1.6
+  '@fp-ts/data': 0.1.1
 
 devDependencies:
-  '@effect/language-service': 0.0.15
+  '@effect/language-service': 0.0.18
   '@rollup/pluginutils': 5.0.2
   '@types/node': 18.11.18
   prettier: 2.8.3
-  ts-node: 10.9.1_q3njxnyul4ocsfnf2gcl3x3qve
-  typescript: '@cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz'
+  ts-node: 10.9.1_3okva65blkefhusc6h6ybg7aom
+  typescript: '@cdn.jsdelivr.net/npm/@tsplus/installer@0.0.168/compiler/typescript.tgz'
 
 packages:
 
@@ -41,15 +40,13 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
-  /@effect-app/core/0.7.0:
-    resolution: {integrity: sha512-piC/dPYxXdegLAu1BLLbEiClpw27/p4gG44yQhKXWRWY2+BqKVnw+m4QgC/cldah9ttIHg+x2/E7bPrI9rAaxA==}
+  /@effect-app/core/0.17.1:
+    resolution: {integrity: sha512-oXOfw+gjJBlKoCjvEdxkjIRQFCBQpW25h3FNvmVUk9UnNRNsr0NSknez5BY/L2LVfSrimsT08xXNusV7hlYcYA==}
     dependencies:
-      '@effect-ts/core': 0.60.5
-      '@effect-ts/monocle': 0.43.0_@effect-ts+core@0.60.5
-      '@effect-ts/system': 0.57.5
-      '@effect/io': 0.0.65
-      '@fp-ts/core': 0.0.11
-      '@fp-ts/data': 0.0.39
+      '@effect/io': 0.1.6
+      '@fp-ts/core': 0.1.1
+      '@fp-ts/data': 0.1.1
+      '@fp-ts/optic': 0.1.0
       cross-fetch: 3.1.5
       lodash: 4.17.21
       path-parser: 6.1.0
@@ -60,19 +57,14 @@ packages:
       - encoding
     dev: false
 
-  /@effect-app/prelude/0.7.0:
-    resolution: {integrity: sha512-yfC1o/+WEKyp7VDMTQVS9vtPaIX5/pe5ddCE9I+eSmIMm2lXEkkeDNR7V1296Ieh8zNGQvHDmBfrdf7ySEYXbA==}
+  /@effect-app/prelude/0.17.2:
+    resolution: {integrity: sha512-w8LYydxr0Gl2BmS3FCL4xrIf0g59ziGeZlfMsSej9XhrDUwwI1MJ0EBeExGOpTp/HHNSPlWxg0RJ01iY1chnnw==}
     dependencies:
-      '@effect-app/core': 0.7.0
-      '@effect-app/schema': 0.7.0
-      '@effect-ts/core': 0.60.5
-      '@effect-ts/monocle': 0.43.0_@effect-ts+core@0.60.5
-      '@effect-ts/system': 0.57.5
-      '@effect/io': 0.0.65
-      '@effect/stm': 0.0.15
-      '@effect/stream': 0.0.12
-      '@fp-ts/core': 0.0.11
-      '@fp-ts/data': 0.0.39
+      '@effect-app/core': 0.17.1
+      '@effect-app/schema': 0.15.1
+      '@effect/io': 0.1.6
+      '@fp-ts/core': 0.1.1
+      '@fp-ts/data': 0.1.1
       date-fns: 2.29.3
       lodash: 4.17.21
       nanoid: 4.0.0
@@ -85,16 +77,14 @@ packages:
       - encoding
     dev: false
 
-  /@effect-app/schema/0.7.0:
-    resolution: {integrity: sha512-vwHc/sEDxeynXj1DDg87YpBwIbkprSbCJaexnl0EajJkkPDB1NPeTC0gmjth+35XSzOO6R5RCpR9wY++mdRePg==}
+  /@effect-app/schema/0.15.1:
+    resolution: {integrity: sha512-amqIHBOxLhx5LxaSLb0bfCUkvGxCrHU72IzIODdY0X8IMfVD1ClAbGAuNh2/f7fFp4xoXTn0K2keKfMVrRRvVQ==}
     dependencies:
-      '@effect-app/core': 0.7.0
-      '@effect-ts/core': 0.60.5
-      '@effect-ts/monocle': 0.43.0_@effect-ts+core@0.60.5
-      '@effect-ts/system': 0.57.5
-      '@effect/io': 0.0.65
-      '@fp-ts/core': 0.0.11
-      '@fp-ts/data': 0.0.39
+      '@effect-app/core': 0.17.1
+      '@effect/io': 0.1.6
+      '@fp-ts/core': 0.1.1
+      '@fp-ts/data': 0.1.1
+      '@fp-ts/optic': 0.1.0
       cross-fetch: 3.1.5
       lodash: 4.17.21
       path-parser: 6.1.0
@@ -104,61 +94,47 @@ packages:
       - encoding
     dev: false
 
-  /@effect-ts/core/0.60.5:
-    resolution: {integrity: sha512-qi1WrtJA90XLMnj2hnUszW9Sx4dXP03ZJtCc5DiUBIOhF4Vw7plfb65/bdBySPoC9s7zy995TdUX1XBSxUkl5w==}
+  /@effect/io/0.1.6:
+    resolution: {integrity: sha512-y3TM9hv4geV9BfMfVWfbTpRZi9g8ASq8jk4yWZ5ZohgQUS06NLZd3oUGmwR6SUgkVPCOoULQB3S9Fp+cXXwF4w==}
     dependencies:
-      '@effect-ts/system': 0.57.5
+      '@fp-ts/core': 0.1.1
+      '@fp-ts/data': 0.1.1
+      typescript: '@cdn.jsdelivr.net/npm/@tsplus/installer@0.0.168/compiler/typescript.tgz'
     dev: false
 
-  /@effect-ts/monocle/0.43.0_@effect-ts+core@0.60.5:
-    resolution: {integrity: sha512-EGMRp2MPhAdJMK3KCQPc6votppHa+18xXlXYC3zCHTGXhycsYoAdMH8wp+R5RzHmUKlsz9kK0A3kJVmY6abPTA==}
-    peerDependencies:
-      '@effect-ts/core': ^0.58.0
-    dependencies:
-      '@effect-ts/core': 0.60.5
-    dev: false
-
-  /@effect-ts/system/0.57.5:
-    resolution: {integrity: sha512-/crHGujo0xnuHIYNc1VgP0HGJGFSoSqq88JFXe6FmFyXPpWt8Xu39LyLg7rchsxfXFeEdA9CrIZvLV5eswXV5g==}
-    dev: false
-
-  /@effect/io/0.0.65:
-    resolution: {integrity: sha512-LiCeZap+ERUAALdk1cscgWJj4o0IEvQ2KhAtI4fev8cqIRjYy/UsYaW29zeX6FIVGUN/5UaU0xLgMuJnl6Kjqw==}
-    dependencies:
-      '@fp-ts/core': 0.0.11
-      '@fp-ts/data': 0.0.39
-    dev: false
-
-  /@effect/language-service/0.0.15:
-    resolution: {integrity: sha512-ELYL6h56W2TjTd13AiddZgbZjZFaa0J6MpnLpM26XlxYIR66j5tmdNFW67dtJxFbieoFS33+E713E5hrkg8MKg==}
+  /@effect/language-service/0.0.18:
+    resolution: {integrity: sha512-k+XbHDepq4sFgrCtdnsfn9jmnvAnI/wgPD9W/OxY3dSihBgEhwrlS4nQoIlf64Mt6sglpogEagJKsZUX/+tqgg==}
     dependencies:
       '@fp-ts/core': 0.0.11
       '@fp-ts/data': 0.0.39
     dev: true
 
-  /@effect/stm/0.0.15:
-    resolution: {integrity: sha512-8H3AnkGFWf96THWog51XR5fQKu81vzN1vlTbXfXmvj1wDNEmY5/cqS4QWLIG2iGlIYHI0y9nVAWBI/LUD0vSkQ==}
-    dependencies:
-      '@effect/io': 0.0.65
-      '@fp-ts/core': 0.0.11
-      '@fp-ts/data': 0.0.39
-    dev: false
-
-  /@effect/stream/0.0.12:
-    resolution: {integrity: sha512-th6NokgLZQC97jGxo4vM4x29aYtmqkGSwMlNFAQUJCp0e0RGfmr+Wr2KRL24L+oRttd7ITNFJ9U2m+uo1IbBOg==}
-    dependencies:
-      '@effect/io': 0.0.65
-      '@fp-ts/core': 0.0.11
-      '@fp-ts/data': 0.0.39
-    dev: false
-
   /@fp-ts/core/0.0.11:
     resolution: {integrity: sha512-BCAJBYzghwoJpcUOARJ1tui50HoYJFlV2pJlVMlsEkDFhD8MTtq8xQVpZCRF66RmtkxtGBYINCQ+5H1lRaL35Q==}
+    dev: true
+
+  /@fp-ts/core/0.1.1:
+    resolution: {integrity: sha512-7vQnrnvJAMrXgIwt0qQNhXkPDtm4l8vwql8EvXeY47v/FwnWpDvt1HISoO9Kq3am5SZ0A8Av+4NqPab2FRdKxw==}
+    dev: false
 
   /@fp-ts/data/0.0.39:
     resolution: {integrity: sha512-dNw1LWjQmChmdenrDuxPct+ycucgKQQboVtWqov8rkAGY3DULznoSDJZam6l2kaLdq1ScPv810N4mzLLT+cBBw==}
     dependencies:
       '@fp-ts/core': 0.0.11
+    dev: true
+
+  /@fp-ts/data/0.1.1:
+    resolution: {integrity: sha512-hgsoSDKP01kGY+g/Ino+QX3VEqiPnf0mrhKujMajT4ma0w82i4u0nMEPbBykyMxscQirFemwl7CnWn7G3TadcA==}
+    dependencies:
+      '@fp-ts/core': 0.1.1
+    dev: false
+
+  /@fp-ts/optic/0.1.0:
+    resolution: {integrity: sha512-fPRUzjvi8564/2A2YmOC0LkQEk46T8X6sypTnUNW4eT0CFJ5fu+dxzn8gMOs17kqOWPZsWRnYw3zX++PErFLdw==}
+    dependencies:
+      '@fp-ts/core': 0.1.1
+      '@fp-ts/data': 0.1.1
+    dev: false
 
   /@jridgewell/resolve-uri/3.1.0:
     resolution: {integrity: sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w==}
@@ -331,7 +307,7 @@ packages:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
     dev: false
 
-  /ts-node/10.9.1_q3njxnyul4ocsfnf2gcl3x3qve:
+  /ts-node/10.9.1_3okva65blkefhusc6h6ybg7aom:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -357,7 +333,7 @@ packages:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: '@cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz'
+      typescript: '@cdn.jsdelivr.net/npm/@tsplus/installer@0.0.168/compiler/typescript.tgz'
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: true
@@ -400,10 +376,9 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  '@cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz':
-    resolution: {tarball: https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.164/compiler/typescript.tgz}
+  '@cdn.jsdelivr.net/npm/@tsplus/installer@0.0.168/compiler/typescript.tgz':
+    resolution: {tarball: https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.168/compiler/typescript.tgz}
     name: typescript
-    version: 5.0.0-tsplus.20230113
+    version: 5.0.0-tsplus.20230128
     engines: {node: '>=4.2.0'}
     hasBin: true
-    dev: true
